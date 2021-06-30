@@ -1,6 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+#necesario para exportar grafica
+fig=plt.figure()
+
 #datos de prueba (numpy solo es para probar, no es necesario al graficar de verdad en el proyecto)
 x=np.linspace(-3,3,51)
 y=x**2
@@ -22,6 +25,5 @@ plt.axhline(4,color='r',lw=2)
 #si se quiere la linea recta vertical es: plt.axvline. Horizontal: plt.axhline
 
 plt.show()
-
-#https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html
-#nos servira para exportar graficos a png
+#exportador de grafica
+fig.savefig('grafica.png')
