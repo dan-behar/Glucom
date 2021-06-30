@@ -1,10 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
+#matplotlib es para grafica, numpy vectoriza python
 
 #necesario para exportar grafica
 fig=plt.figure()
 
-#datos de prueba (numpy solo es para probar, no es necesario al graficar de verdad en el proyecto)
 x=np.linspace(-3,3,51)
 y=x**2
 
