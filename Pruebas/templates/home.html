@@ -10,6 +10,47 @@ body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 body {font-size:16px;}
 .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
 .w3-half img:hover{opacity:1}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+  border-radius: 5px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+img {
+  border-radius: 5px 5px 0 0;
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+table {
+  width:100%;
+}
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#t01 th {
+  background-color: red;
+  color: white;
+}
 </style>
 <body>    
 
@@ -77,65 +118,75 @@ body {font-size:16px;}
     <div class="w3-container" id="Rango" style="margin-top:75px">
         <h1 class="w3-xxxlarge w3-text-red"><b>Rango de Análisis</b></h1>
         <hr style="width:50px;border:5px solid red" class="w3-round">
-        <p>We are a interior design service that focus on what's best for your home and what's best for you!</p>
-        <p>Some text about our services - what we do and what we offer. We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
+        <p>Seleccione un rango de fechas para poder llevar a cabo el análisis.</p><br>
+        <form method="POST" action="">
+          <div class="w3-row-padding">
+            <div class="w3-half">
+              <div id="date1" class="md-form md-outline input-with-post-icon datepicker">
+                <label for="date1">Seleccione fecha de inicio:</label>
+                <input type="date" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31" name="date1">
+              </div>
+            </div>
+
+            <div class="w3-half">
+              <div id="date2" class="md-form md-outline input-with-post-icon datepicker">
+                <label for="date2">Seleccione fecha de fin:</label>
+                <input type="date" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31" name="date2">
+              </div>
+            </div>
+          </div>
+          <br><br>
+          <button class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom" type="submit">Fijar Rango</button>
+        </form>
+        <br>
+        <p>¡Esta sección es INDISPENSALE!</p>
       </div>
 
   <!-- Graficas -->
   <div class="w3-container" id="Graficas" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-red"><b>Gráficas</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>We are a interior design service that focus on what's best for your home and what's best for you!</p>
-    <p>Some text about our services - what we do and what we offer. We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
+    <p>Comparación Glucosa-Tiempo</p>
+    <p>aqui grafica :)</p>
   </div>
   
   <!-- Tabla -->
   <div class="w3-container" id="Tabla" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-red"><b>Metabolización de Glucosa</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>The best team in the world.</p>
-    <p>We are lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
-    incididunt ut labore et quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    </p>
-    <p><b>Our designers are thoughtfully chosen</b>:</p>
+    <p>¡Razones de cambio instantáneas!</p>
+    <p><b>Datos en base a fechas del rango ingresado...</b></p>
   </div>
 
-  <!-- The Team -->
+  <!-- The Tabla -->
   <div class="w3-row-padding w3-grayscale">
     <div class="w3-col m4 w3-margin-bottom">
       <div class="w3-light-grey">
-        <img src="/w3images/team2.jpg" alt="John" style="width:100%">
         <div class="w3-container">
-          <h3>John Doe</h3>
-          <p class="w3-opacity">CEO & Founder</p>
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+          <h3>Glucosa-Tiempo</h3>  <!-- aqui se hace un for para la cantidad de  datos en el rango-->
+          <ul class="w3-ul w3-light-grey w3-center">
+            <li class="w3-padding-16">for de resultados</li>
+          </ul>
         </div>
       </div>
     </div>
     <div class="w3-col m4 w3-margin-bottom">
       <div class="w3-light-grey">
-        <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
         <div class="w3-container">
-          <h3>Jane Doe</h3>
-          <p class="w3-opacity">Designer</p>
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+          <h3>Fecha</h3>
+          <ul class="w3-ul w3-light-grey w3-center">
+            <li class="w3-padding-16">for de fechas</li>
+          </ul>
         </div>
       </div>
     </div>
     <div class="w3-col m4 w3-margin-bottom">
       <div class="w3-light-grey">
-        <img src="/w3images/team3.jpg" alt="Mike" style="width:100%">
         <div class="w3-container">
-          <h3>Mike Ross</h3>
-          <p class="w3-opacity">Architect</p>
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+          <h3>Condición</h3>
+          <ul class="w3-ul w3-light-grey w3-center">
+            <li class="w3-padding-16">for de ayuno,almuerzo,etc</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -145,43 +196,20 @@ body {font-size:16px;}
   <div class="w3-container" id="Aceleracion" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-red"><b>Aceleración Metabólica de Glucosa</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>Some text our prices. Lorem ipsum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure</p>
+    <p>¡Aceleraciones de glucosa en sangre!</p>
   </div>
-
   <div class="w3-row-padding">
     <div class="w3-half w3-margin-bottom">
       <ul class="w3-ul w3-light-grey w3-center">
-        <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
-        <li class="w3-padding-16">Floorplanning</li>
-        <li class="w3-padding-16">10 hours support</li>
-        <li class="w3-padding-16">Photography</li>
-        <li class="w3-padding-16">20% furniture discount</li>
-        <li class="w3-padding-16">Good deals</li>
-        <li class="w3-padding-16">
-          <h2>$ 199</h2>
-          <span class="w3-opacity">per room</span>
-        </li>
-        <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
-        </li>
+        <li class="w3-dark-grey w3-xlarge w3-padding-32">Mínima</li>
+        <li class="w3-padding-16">resultado mínimo</li>
       </ul>
     </div>
         
     <div class="w3-half">
       <ul class="w3-ul w3-light-grey w3-center">
-        <li class="w3-red w3-xlarge w3-padding-32">Pro</li>
-        <li class="w3-padding-16">Floorplanning</li>
-        <li class="w3-padding-16">50 hours support</li>
-        <li class="w3-padding-16">Photography</li>
-        <li class="w3-padding-16">50% furniture discount</li>
-        <li class="w3-padding-16">GREAT deals</li>
-        <li class="w3-padding-16">
-          <h2>$ 249</h2>
-          <span class="w3-opacity">per room</span>
-        </li>
-        <li class="w3-light-grey w3-padding-24">
-          <button class="w3-button w3-red w3-padding-large w3-hover-black">Sign Up</button>
-        </li>
+        <li class="w3-red w3-xlarge w3-padding-32">Máxima</li>
+        <li class="w3-padding-16">resultado  máximo</li>
       </ul>
     </div>
   </div>
@@ -190,66 +218,56 @@ body {font-size:16px;}
   <div class="w3-container" id="Promedio" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-red"><b>Glucosa Promedio</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>Do you want us to style your home? Fill out the form and fill me in with the details :) We love meeting new people!</p>
-    <form action="/action_page.php" target="_blank">
-      <div class="w3-section">
-        <label>Name</label>
-        <input class="w3-input w3-border" type="text" name="Name" required>
+    <p>Promedio de glucosa durante el rango de tiempo seleccionado...</p>
+    <center>
+    <div class="card">
+      <div class="container">
+        <h2><b>{aqui va el promedio}</b></h2> 
+        <p>*glucosa en sangre</p> 
       </div>
-      <div class="w3-section">
-        <label>Email</label>
-        <input class="w3-input w3-border" type="text" name="Email" required>
-      </div>
-      <div class="w3-section">
-        <label>Message</label>
-        <input class="w3-input w3-border" type="text" name="Message" required>
-      </div>
-      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send Message</button>
-    </form>  
+    </div>
+    </center>
   </div>
 
   <!-- Meta -->
   <div class="w3-container" id="Meta" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-red"><b>Glucosa-Meta</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>Do you want us to style your home? Fill out the form and fill me in with the details :) We love meeting new people!</p>
+    <p>¡Ten una idea! Ingresa el nivel de glucosa que te gustaría alcanzar, y nosotros calculamos aproximadamente en cuánto tiempo llegarás a la meta.</p>
+    <p><b>Se tomará en cuenta el tiempo entre cada medicamento y la medición del glucómetro.</b></p>
     <form action="/action_page.php" target="_blank">
       <div class="w3-section">
-        <label>Name</label>
-        <input class="w3-input w3-border" type="text" name="Name" required>
+        <label>Nivel Específico de Glucosa:</label>
+        <input class="w3-input w3-border" type="text" name="meta" required>
       </div>
-      <div class="w3-section">
-        <label>Email</label>
-        <input class="w3-input w3-border" type="text" name="Email" required>
+      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Calcular</button>
+    </form>
+    <center>
+      <br><br>
+      <div class="card">
+        <div class="container">
+          <h2><b>{aqui va el tiempo}</b></h2> 
+          <p>*para alcanzar meta</p> 
+        </div>
       </div>
-      <div class="w3-section">
-        <label>Message</label>
-        <input class="w3-input w3-border" type="text" name="Message" required>
-      </div>
-      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send Message</button>
-    </form>  
+      </center>  
   </div>
 
   <!-- Tendencia -->
   <div class="w3-container" id="Tendencia" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-red"><b>Tendencia</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>Do you want us to style your home? Fill out the form and fill me in with the details :) We love meeting new people!</p>
-    <form action="/action_page.php" target="_blank">
-      <div class="w3-section">
-        <label>Name</label>
-        <input class="w3-input w3-border" type="text" name="Name" required>
+    <p>Modelo de Regresión Lineal.</p>
+    <p>aqui va la grafica :)</p>
+    <center>
+      <br><br>
+      <div class="card">
+        <div class="container">
+          <h2><b>{aqui va el coeficiente}</b></h2> 
+          <p>*coeficiente de determinación r²</p> 
+        </div>
       </div>
-      <div class="w3-section">
-        <label>Email</label>
-        <input class="w3-input w3-border" type="text" name="Email" required>
-      </div>
-      <div class="w3-section">
-        <label>Message</label>
-        <input class="w3-input w3-border" type="text" name="Message" required>
-      </div>
-      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send Message</button>
-    </form>  
+      </center>
   </div>
 
   <!-- Resumen -->
@@ -257,28 +275,32 @@ body {font-size:16px;}
     <h1 class="w3-xxxlarge w3-text-red"><b>Resumen Estadístico</b></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
     <p>Do you want us to style your home? Fill out the form and fill me in with the details :) We love meeting new people!</p>
-    <form action="/action_page.php" target="_blank">
-      <div class="w3-section">
-        <label>Name</label>
-        <input class="w3-input w3-border" type="text" name="Name" required>
-      </div>
-      <div class="w3-section">
-        <label>Email</label>
-        <input class="w3-input w3-border" type="text" name="Email" required>
-      </div>
-      <div class="w3-section">
-        <label>Message</label>
-        <input class="w3-input w3-border" type="text" name="Message" required>
-      </div>
-      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send Message</button>
-    </form>  
+    <table id="t01">
+      <tr>
+        <th>Media</th>
+        <th>Mediana</th> 
+        <th>Moda</th>
+        <th>Valor Mínimo</th>
+        <th>Desviación Estándar</th>
+      </tr>
+      <tr>
+        <td>{media}</td>
+        <td>{mediana}</td>
+        <td>{moda}</td>
+        <td>{valor minimo}</td>
+        <td>{desviacion estandar}</td>
+      </tr>
+    </table>
+    <p>Aqui va histograma :)</p>
   </div>
 
 <!-- End page content -->
 </div>
 
 <!-- W3.CSS Container -->
-<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+  <p class="w3-right">Daniel Behar, Cruz del Cid, Marcela Melgar</p>
+</div>
 
 <script>
 // Script to open and close sidebar
@@ -299,6 +321,9 @@ function onClick(element) {
   var captionText = document.getElementById("caption");
   captionText.innerHTML = element.alt;
 }
+
+  // Date Picker Initialization
+  $('.datepicker').datepicker();
 </script>
 
 </body>
