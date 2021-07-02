@@ -1,12 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]> <html lang="en" class="ie6 ielt8"> <![endif]-->
-<!--[if IE 7 ]>    <html lang="en" class="ie7 ielt8"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <title>GMP</title>
-<link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <style>
     /* Reset CSS */
@@ -133,6 +129,7 @@ form:after {
 }
 #content form { margin: 0 20px; position: relative }
 #content form input[type="text"],
+#content form input[type="date"],
 #content form input[type="time"] {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -158,6 +155,7 @@ form:after {
   width: 80%;
 }
 #content form input[type="text"]:focus,
+#content form input[type="date"]:focus,
 #content form input[type="time"]:focus {
   -webkit-box-shadow: 0 0 2px #ed1c24 inset;
   -moz-box-shadow: 0 0 2px #ed1c24 inset;
@@ -213,22 +211,33 @@ form:after {
     <br><br><br><br><br><br><br><br><br><br><br><br>
 <div class="container">
   <section id="content">
-    <form method="POST" action="" >
+    <form method="POST" action="">
       <h1>GLUCOSE MONITORING PROGRAM</h1>
       <div>
           <p>Enter Name:</p>
         <input type="text" placeholder="Name" required="" id="Name" name="name"/>
+      </div>
+      <div id="date" class="md-form md-outline input-with-post-icon datepicker">
+        <label for="date">Select a date:</label>
+        <input type="date" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31" name="date">
       </div>
       <div class="md-form">
         <label for="appt">Select a time:</label>
         <input type="time" id="appt" name="appt">
       </div>
       <div>
+        <a href="/home">
         <input type="submit" value="Comenzar" />
+        </a>
       </div>
     </form><!-- form -->
   </section><!-- content -->
 </div><!-- container -->
+
+<script>
+  // Data Picker Initialization
+  $('.datepicker').datepicker();
+</script>
 
 </body>
 </html>
