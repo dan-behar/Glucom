@@ -11,15 +11,11 @@ def derivada(x,y):
     n  = len(x)
     print(n)
     dx=np.zeros_like(x)
-    print(dx)
 
-    dx[0]=((y[1]-y[0])/(x[1]-x[0])) #adelante
-    print(dx)
+    dx[0]=((y[1]-y[0])/(x[1]-x[0])) # adelante
     for i in range(n-2):
-        dx[i+1]=((y[i+2]-y[i])/(x[i+2]-x[i])) #centrada
-        print(dx)
-    dx[n-1]=((y[n-1]-y[n-2])/(x[n-1]-x[n-1-2])) #atras
-    print(dx[n-1])
+        dx[i+1]=((y[i+2]-y[i])/(x[i+2]-x[i])) # centrada
+    dx[n-1]=((y[n-1]-y[n-2])/(x[n-1]-x[n-2])) # atras
     return dx
 
 #ejemplo
@@ -28,5 +24,5 @@ y = [52,5,-5,-40,10]
 
 ans=derivada(x,y)
 print(ans)
-
-#el resultado me da diferente a octave
+# El resultado ya es igual al de octave
+# Se modificaron los indices delo vector porque comienzan en cero 
