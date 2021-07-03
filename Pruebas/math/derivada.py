@@ -9,12 +9,17 @@ import numpy as np
 
 def derivada(x,y):
     n  = len(x)
+    print(n)
     dx=np.zeros_like(x)
+    print(dx)
 
-    dx[1]=((y[2]-y[1])/(x[2]-x[1])) #adelante
-    for i in range(n-1):
-        dx[i]=((y[i+1]-y[i-1])/(x[i+1]-x[i-1])) #centrada
-    dx[i]=((y[i]-y[i-1])/(x[i]-x[i-1])) #atras
+    dx[0]=((y[1]-y[0])/(x[1]-x[0])) #adelante
+    print(dx)
+    for i in range(n-2):
+        dx[i+1]=((y[i+2]-y[i])/(x[i+2]-x[i])) #centrada
+        print(dx)
+    dx[n-1]=((y[n-1]-y[n-2])/(x[n-1]-x[n-1-2])) #atras
+    print(dx[n-1])
     return dx
 
 #ejemplo
