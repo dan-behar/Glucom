@@ -5,11 +5,13 @@ def LagrangePol(x,y,Xint):
     n = len(x)
 
     for i in range(n):
+        print(i)
         producto=y[i]
         for j in range(n):
-            if i!=j:
+            print(j,end=' ')
+            if i is not j:
                 producto=producto*((Xint-x[j])/(x[i]-x[j]))
-    sum=sum+producto
+        sum=sum+producto
     Yinter=sum
     return Yinter
 
