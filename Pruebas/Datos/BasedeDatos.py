@@ -7,6 +7,7 @@ import pandas as pd
 import numpy
 import os
 import pathlib
+import datetime
 # Se importa la ruta donde se encuentra la base de datos
 def rutaa(filename):
     ruta = str(pathlib.Path(__file__).parent.resolve()) # Obtiene la ruta del directorio 
@@ -60,3 +61,29 @@ def BasedeDatos(filename, medi): # filename es el nombre de la base de datos, me
 table = BasedeDatos('datos.xlsx',8)
 for row in table: 
     print(row)
+
+print('')
+print('')
+print('')
+def muestra(date1, date2, tabla): 
+    lista = []
+    for row in tabla: #selecciona los datos que están en el rango de fechas 
+        if date1 <= row[0] and row[0] <= date2: 
+            lista.append(row) 
+
+    if len(lista) <= 10: 
+        return lista
+    
+    return lista
+
+"""
+lista = []
+for row in table: #selecciona los datos que están en el rango de fechas 
+    if datetime.datetime(2020, 6, 1, 0, 0) <= row[0] and row[0] <= datetime.datetime(2020, 6, 10, 0, 0): 
+        lista.append(row)
+"""
+lista = muestra(datetime.datetime(2020, 6, 1, 0, 0), datetime.datetime(2020, 6, 30, 0, 0), table)
+for row in lista: 
+    print(row)
+
+

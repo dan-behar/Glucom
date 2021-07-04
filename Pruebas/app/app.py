@@ -18,6 +18,7 @@ def register():
         hora = request.form['appt']
         print(name,hora)
         print(datetime.strptime(hora, '%H:%M'))
+        print(hora)
     return render_template("register.html")
 
 @app.route("/home", methods=["GET", "POST"])
