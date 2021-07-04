@@ -8,10 +8,12 @@ import numpy
 import os
 import pathlib
 import datetime
+import random
+
 # Se importa la ruta donde se encuentra la base de datos
 def rutaa(filename):
     ruta = str(pathlib.Path(__file__).parent.resolve()) # Obtiene la ruta del directorio 
-    ruta = ruta.replace(chr(92),'/')+'/'+filename # 
+    ruta = ruta.replace(chr(92),'/')+'/'+filename # Covierte el '\' a '/' para que read_excel pueda leer la dirección 
     return ruta
 
 def BasedeDatos(filename, medi): # filename es el nombre de la base de datos, medi es la hora a la que se toma la medicina 
@@ -32,6 +34,15 @@ def BasedeDatos(filename, medi): # filename es el nombre de la base de datos, me
             tabla.pop(i) # Elimina las filas que tengan un elemeneto nan
             n = len(tabla)
         i+=1 
+    for j in range(4):
+        i = 0 
+        while i < n: 
+            nan = f'{tabla[i][j]}'
+            if nan == 'nan':
+                tabla.pop(i) # Elimina las filas que tengan un elemeneto nan
+                n = len(tabla)
+            i+=1 
+        
     # Filtrado de datos de comida
     # Ayuno = 0
     # Desayuno = 1
@@ -73,8 +84,16 @@ def muestra(date1, date2, tabla):
 
     if len(lista) <= 10: 
         return lista
-    
-    return lista
+    n = len(lista)
+
+    indices = range(n)
+    indices = random.sample(indices,10)
+    lista2 = []
+
+    for i in indices:
+        lista2.append(lista[i])
+
+    return lista2
 
 """
 lista = []
@@ -82,8 +101,6 @@ for row in table: #selecciona los datos que están en el rango de fechas
     if datetime.datetime(2020, 6, 1, 0, 0) <= row[0] and row[0] <= datetime.datetime(2020, 6, 10, 0, 0): 
         lista.append(row)
 """
-lista = muestra(datetime.datetime(2020, 6, 1, 0, 0), datetime.datetime(2020, 6, 30, 0, 0), table)
+lista = muestra(datetime.datetime(2020, 6, 1, 0, 0), datetime.datetime(2021, 4, 20, 0, 0), table)
 for row in lista: 
     print(row)
-
-

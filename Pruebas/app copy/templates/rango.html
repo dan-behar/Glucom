@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+
+<!-- Rango -->
+<div class="w3-container" id="Rango" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><strong>Rango de Análisis</strong></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Seleccione un rango de fechas para poder llevar a cabo el análisis.</p><br>
+    <form method="POST" action="">
+      <div class="w3-row-padding">
+        <div class="w3-half">
+          <div id="date1" class="md-form md-outline input-with-post-icon datepicker">
+            <label for="date1">Seleccione fecha de inicio:</label>
+            <input type="date" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31" name="date1">
+          </div>
+        </div>
+
+        <div class="w3-half">
+          <div id="date2" class="md-form md-outline input-with-post-icon datepicker">
+            <label for="date2">Seleccione fecha de fin:</label>
+            <input type="date" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31" name="date2">
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <button class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom" type="submit">Fijar Rango</button>
+    </form>
+    <br>
+    <p>¡Esta sección es INDISPENSALE!</p>
+  </div>
+
+
+
+{% endblock %} 

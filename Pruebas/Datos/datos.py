@@ -3,6 +3,8 @@ import numpy
 import os
 import pathlib
 import datetime
+import random
+
 
 class Datos: 
     def __init__(self, filename, hora): 
@@ -57,18 +59,32 @@ class Datos:
             row[2] = int(h) + int(m)/60 - hora # Covierte la hora a decimal tomando como cero la hora a la que se toma la medicina 
         return tabla 
 
-    def muestra(self, Date1, date2): 
+    def muestra(self, date1, date2): 
         lista = []
         for row in self.tabla: #selecciona los datos que están en el rango de fechas 
             if date1 <= row[0] and row[0] <= date2: 
                 lista.append(row) 
-        
+
         if len(lista) <= 10: 
             return lista
-        
-        return lista
+        n = len(lista)
+
+        indices = range(n)
+        indices = random.sample(indices,10)
+        lista2 = []
+
+        for i in indices:
+            lista2.append(lista[i])
+
+        return lista2
 
 basededatos = Datos('datos.xlsx',8)
 
 for row in basededatos.getTabla(): 
+    print(row)
+
+
+print('')
+muestra = basededatos.muestra(datetime.datetime(2020, 6, 1, 0, 0), datetime.datetime(2021, 4, 20, 0, 0)) 
+for row in muestra: 
     print(row)
