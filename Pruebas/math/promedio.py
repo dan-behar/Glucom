@@ -1,11 +1,10 @@
 
 def Integral(x,y):
     n=len(x)
-    h=x[2]-x[1]
-    I=(0.5*(y[1]+y[2])*h)
-    i=2
+    h=x[1]-x[0]
+    I=(0.5*(y[0]+y[1])*h)
 
-    for i in range (n-1):
+    for i in range (1,n-1):
         h=x[i+1]-x[i]
         I=I+0.5*(y[i]+y[i+1])*h
     return I

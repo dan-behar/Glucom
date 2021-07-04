@@ -11,8 +11,9 @@ def Mediana(x):
 
 def Moda(x):
     arreglo=numpy.array(x)
-    moda=stats.mode(arreglo)
-    return moda
+    moda=stats.mode(arreglo, axis=None)
+    resp=moda[0]
+    return resp
 
 def Maximo(x):
     maximo=max(x)
@@ -27,7 +28,6 @@ def Desviacion(x):
     return desviacion
 
 #ejemplo
-#!!!!revisar moda
 x=[1,2,4,5,7]
 med=Media(x)
 medi=Mediana(x)
@@ -36,4 +36,4 @@ maxi=Maximo(x)
 mini=Minimo(x)
 des=Desviacion(x)
 
-print(f'media: {med}\nmediana:{medi}\nmoda:{md}\nmaximo:{maxi}\nminimo:{mini}\ndesviacion:{des}')
+print(f'media: {med}\nmediana:{medi}\nmoda:{md[0]}\nmaximo:{maxi}\nminimo:{mini}\ndesviacion:{des}')
