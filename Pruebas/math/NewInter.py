@@ -25,16 +25,6 @@ def Newton(x,y,int):
             a.append(divDIF[j][0])
         
         return a
-        
-        """
-        Yinter=a[0]
-        xn=1
-        for k in range (2,n):
-            xn=xn*(Xint-x[k-1])
-            Yinter=Yinter+a[k]*xn
-
-        return Yinter
-        """
     else:
         return 0
 

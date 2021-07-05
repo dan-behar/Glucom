@@ -13,8 +13,7 @@
 
 # ---TAREAS---
 # Pasar funciones de Octave a Python (Marce) (DOING)
-    - Trapecio compuesto o Simpson un tercio 
-    - Bisección o Regula Falsi 
+    - Trapecio compuesto o Simpson un tercio
     - Regresión lineal 
     -
 # Codificación de los datos 
