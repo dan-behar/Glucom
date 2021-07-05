@@ -2,6 +2,9 @@
 # "pip install pandas" 
 # "pip install xlrd"
 # "pip install openpyxl"
+# librería de graficas
+# librería sympy 
+# 
 
 # Glucom
 # Proyecto final de Scientific Computing
