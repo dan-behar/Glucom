@@ -103,15 +103,3 @@ class Datos:
             lista2.append(lista[i])
 
         return lista2
-
-
-basededatos = Datos('datos.xlsx',8)
-
-for row in basededatos.getTabla(): 
-    print(row)
-
-
-print('')
-muestra = basededatos.muestra(datetime.datetime(2020, 6, 1, 0, 0), datetime.datetime(2021, 4, 20, 0, 0)) 
-for row in muestra: 
-    print(row)
