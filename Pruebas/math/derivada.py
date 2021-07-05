@@ -25,4 +25,4 @@ y = [52,5,-5,-40,10]
 ans=derivada(x,y)
 print(ans)
 # El resultado ya es igual al de octave
-# Se modificaron los indices delo vector porque comienzan en cero 
+# Se modificaron los indices del vector porque comienzan en cero 
