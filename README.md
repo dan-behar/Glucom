@@ -2,24 +2,21 @@
 # "pip install pandas" 
 # "pip install xlrd"
 # "pip install openpyxl"
-# librería de graficas
-# librería sympy 
+# "pip install matplotlib"
+# "pip install sympy"
+# "pip install numpy"
+# "pip install scipy"
 # 
 
 # Glucom
 # Proyecto final de Scientific Computing
 
 # ---TAREAS---
-# Obtención de la muesta aleatoria (Cruz) (DOING)
 # Pasar funciones de Octave a Python (Marce) (DOING)
-    - derivada 
-    - Langrange 
-    - Polinomio interpolante de Newton 
-    - Trapecio compuesto 
+    - Trapecio compuesto o
     - Simpson un tercio 
     - Bisección o Regula Falsi 
     - Regresión lineal 
-    - Resumen estadístico
     -
 # Codificación de los datos 
 # Selección de observaciones aleatorias en un rango de fechas
@@ -35,4 +32,4 @@
 # Clasificación y depuración de datos (Done)
 # Generar numeros aleatorios que no se repitan en un rango de (0, n) (DONE)
 # Gráficas (DONE)
-
+# Obtención de la muesta aleatoria (DONE)

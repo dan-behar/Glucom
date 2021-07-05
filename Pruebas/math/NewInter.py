@@ -1,4 +1,5 @@
 import numpy as np
+import sympy as sym
 
 def Newton(x,y,int):
     a=[]
@@ -38,6 +39,19 @@ def Newton(x,y,int):
         return 0
 
 #Prueba
-x=[1,2,4,5,7]
-y=[52,5,-5,-40,10]
-print(Newton(x,y,9))
+chinga=[1,2,4,5,7]
+damadre=[52,5,-5,-40,10]
+a=Newton(chinga,damadre,9)
+print(a)
+
+x=sym.Symbol('x')
+
+y=a[0]
+for i in range (1,len(a)):
+    t=a[i]
+    for j in range(i):
+        t=t*(x-chinga[j])
+    y+=t
+
+print(y)
+print(y.subs(x,9))
