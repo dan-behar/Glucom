@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, url_for, redirect
 from jinja2 import Template, FileSystemLoader, Environment
 from RegLin import reglin, grafreglin, imagen
 from datetime import datetime
-from datos import Datos 
+from datos import Datos
 from NewInter import Newton
 from Integracion import TrapecioM
 from derivada import derivada
@@ -179,8 +179,10 @@ def ten():
 def res():
     global data
     global glucoData
+    global fecha1
+    global fecha2
     glucoData = []
-    todos = data.getTabla()
+    todos = data.MuestraTodos(fecha1,fecha2)
     for i in range(len(todos)):
         glucoData.append(todos[i][1])
     media=Media(glucoData)

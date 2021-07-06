@@ -118,6 +118,14 @@ class Datos:
 
         return lista2
 
+    def MuestraTodos(self,date1,date2):
+        lista = []
+        for row in self.tabla: #selecciona los datos que están en el rango de fechas 
+            if date1 <= row[0] and row[0] <= date2: 
+                lista.append(row) 
+
+        return lista
+
 """
 basededatos = Datos('datos.xlsx',8)
 
