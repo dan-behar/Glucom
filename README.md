@@ -12,12 +12,11 @@
 # Proyecto final de Scientific Computing
 
 # ---TAREAS---
-# Aceleración de la glucosa (Minima y máxima)
 # Glucosa meta *
           - Hacer polinomio interpolado - meta 
           - Aproximar 
           - Buscar rangos donde hayan posibles ceros
-# Resumen estadístico 
+# Resumen estadístico HISTOGRAMA
 # Ingresar desde la pagina el archivo excel deseado {OPCIONAL}
 
 
@@ -39,3 +38,4 @@
 # Tendencia (Regresión lineal) (DONE)
 # Gráficas (DONE)
 # Glucosa promedio (DONE)
+# Aceleración de la glucosa (Minima y máxima) (DONE)

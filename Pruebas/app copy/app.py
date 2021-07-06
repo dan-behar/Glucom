@@ -54,7 +54,6 @@ def register():
     if request.method == "POST":
         name = request.form['name']
         hora = request.form['appt']
-        print(name,hora)
 
         (h, m) = hora.split(':')
         hora = int(h) + int(m)/60 
@@ -78,9 +77,7 @@ def rango():
         fecha2 = request.form['date2']
         date1 = datetime.strptime(fecha1, '%Y-%m-%d')
         date2 = datetime.strptime(fecha2, '%Y-%m-%d')
-        # print(date1, date2)
         muestra = data.muestra(date1, date2)
-        print(len(muestra))
         horaMuestra=[]
         glucoMuestra=[]
         consMuestra=[]
@@ -90,8 +87,7 @@ def rango():
             glucoMuestra.append(muestra[i][1])
             consMuestra.append(str(muestra[i][3]))
             fechaMuestra.append(str(muestra[i][0]))
-    print(glucoMuestra)
-    print(horaMuestra)
+
     return render_template("rango.html", fecha1=fecha1,fecha2=fecha2)
 
 @app.route("/graficas", methods=["GET", "POST"])
@@ -125,8 +121,6 @@ def gra():
             espacio = []
             for i in rango:
                 espacio.append(y.subs(x,i))
-            print(len(rango))
-            print(len(espacio))
             plt.plot(rango,espacio)
             plt.xlabel('Tiempo')
             plt.ylabel('Glucosa en la Sangre')  
@@ -149,13 +143,17 @@ def ta():
     cambio=derivada(horaMuestra,glucoMuestra)
     for i in range(len(cambio)):
         cambio[i]=round(cambio[i],4)
-    print(fechaMuestra)
-    print(consMuestra)
     return render_template("tabla.html",cambio=cambio,fecha=fechaMuestra,condicion=consMuestra)
 
 @app.route("/aceleracion", methods=["GET", "POST"])
 def ace():
-    return render_template("aceleracion.html")
+    global horaMuestra
+    global glucoMuestra
+    cambio = derivada(horaMuestra, glucoMuestra)
+    aceleracion = derivada(horaMuestra, cambio)
+    maximo = max(aceleracion)
+    minimo = min(aceleracion)
+    return render_template("aceleracion.html",maximo=maximo,minimo=minimo)
 
 @app.route("/promedio", methods=["GET", "POST"])
 def pro():
@@ -186,7 +184,6 @@ def res():
     todos = data.getTabla()
     for i in range(len(todos)):
         glucoData.append(todos[i][1])
-    print(glucoData)
     media=Media(glucoData)
     mediana=Mediana(glucoData)
     moda=Moda(glucoData)

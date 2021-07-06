@@ -9,7 +9,6 @@ import numpy as np
 
 def derivada(x,y):
     n  = len(x)
-    print(n)
     dx=np.zeros_like(x)
 
     dx[0]=((y[1]-y[0])/(x[1]-x[0])) # adelante

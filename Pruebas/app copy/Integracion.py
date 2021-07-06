@@ -18,9 +18,10 @@ def TrapecioM (x, y):
         suma+= (y[i+1]+y[i])*h
     return suma*0.5 
 
-
+"""
 x=[1, 2, 4, 5, 7]
 
 y=[52, 5, -5, -40, 10]
 
 print(TrapecioM (x,y))
+"""
