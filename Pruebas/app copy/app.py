@@ -6,6 +6,7 @@ from datos import Datos
 from NewInter import Newton
 from Integracion import TrapecioM
 from derivada import derivada
+from lagrange import LagrangePol
 from numpy import arange 
 from resumenest import Media,Mediana,Moda,Maximo,Minimo,Desviacion
 import matplotlib.pyplot as plt
@@ -164,7 +165,16 @@ def pro():
 
 @app.route("/meta", methods=["GET", "POST"])
 def met():
-    return render_template("meta.html")
+    global horaMuestra
+    global glucoMuestra
+    meta=0
+    if request.method == "POST":
+        meta = request.form['meta']
+        meta = int(meta)
+    tiempo=LagrangePol(glucoMuestra,horaMuestra,meta)
+    print(tiempo)
+    print("----")
+    return render_template("meta.html",tiempo=tiempo)
 
 @app.route("/tendencia", methods=["GET", "POST"])
 def ten():
