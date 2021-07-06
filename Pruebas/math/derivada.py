@@ -17,12 +17,3 @@ def derivada(x,y):
         dx[i+1]=((y[i+2]-y[i])/(x[i+2]-x[i])) # centrada
     dx[n-1]=((y[n-1]-y[n-2])/(x[n-1]-x[n-2])) # atras
     return dx
-
-#ejemplo
-x=[1,2,4,5,7]
-y = [52,5,-5,-40,10]
-
-ans=derivada(x,y)
-print(ans)
-# El resultado ya es igual al de octave
-# Se modificaron los indices del vector porque comienzan en cero 
