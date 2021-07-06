@@ -6,23 +6,26 @@
   <div class="w3-container" id="Resumen" style="margin-top:75px">
     <h1 class="w3-xxxlarge w3-text-red"><strong>Resumen Estadístico</strong></h1>
     <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p>Do you want us to style your home? Fill out the form and fill me in with the details :) We love meeting new people!</p>
-    <table id="table1">
+    <div class="table">
+      <table id="t01">
       <tr>
         <th id="media">Media</th>
         <th id="mediana">Mediana</th> 
         <th id="moda">Moda</th>
+        <th id="moda">Valor Máximo</th>
         <th id="minimo">Valor Mínimo</th>
         <th id="desviacion">Desviación Estándar</th>
       </tr>
       <tr>
-        <td>{media}</td>
-        <td>{mediana}</td>
-        <td>{moda}</td>
-        <td>{valor minimo}</td>
-        <td>{desviacion estandar}</td>
+        <td>{{media}}</td>
+        <td>{{mediana}}</td>
+        <td>{{moda}}</td>
+        <td>{{maximo}}</td>
+        <td>{{minimo}}</td>
+        <td>{{desviacion}}</td>
       </tr>
     </table>
+    </div>
     <p>Aqui va histograma :)</p>
     <br><br><br><br>
   </div>

@@ -7,6 +7,8 @@ from NewInter import Newton
 from Integracion import TrapecioM
 from derivada import derivada
 from numpy import arange 
+from resumenest import Media,Mediana,Moda,Maximo,Minimo,Desviacion
+from numpy import arange 
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sym
@@ -40,6 +42,8 @@ global fecha2
 fecha2 = ""
 global fechaMuestra
 fechaMuestra = []
+global glucoData
+glucoData = []
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -176,7 +180,20 @@ def ten():
 
 @app.route("/resumen", methods=["GET", "POST"])
 def res():
-    return render_template("resumen.html")
+    global data
+    global glucoData
+    glucoData = []
+    todos = data.getTabla()
+    for i in range(len(todos)):
+        glucoData.append(todos[i][1])
+    print(glucoData)
+    media=Media(glucoData)
+    mediana=Mediana(glucoData)
+    moda=Moda(glucoData)
+    maximo=Maximo(glucoData)
+    minimo=Minimo(glucoData)
+    desviacion=Desviacion(glucoData)
+    return render_template("resumen.html",media=round(media,4),mediana=mediana,moda=moda[0],maximo=maximo,minimo=minimo,desviacion=round(desviacion,4))
 
 
 if __name__ == "__main__":
