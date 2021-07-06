@@ -8,7 +8,6 @@ from Integracion import TrapecioM
 from derivada import derivada
 from numpy import arange 
 from resumenest import Media,Mediana,Moda,Maximo,Minimo,Desviacion
-from numpy import arange 
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sym
@@ -151,8 +150,8 @@ def ace():
     global glucoMuestra
     cambio = derivada(horaMuestra, glucoMuestra)
     aceleracion = derivada(horaMuestra, cambio)
-    maximo = max(aceleracion)
-    minimo = min(aceleracion)
+    maximo = round(max(aceleracion),4)
+    minimo = round(min(aceleracion),4)
     return render_template("aceleracion.html",maximo=maximo,minimo=minimo)
 
 @app.route("/promedio", methods=["GET", "POST"])
@@ -190,8 +189,20 @@ def res():
     maximo=Maximo(glucoData)
     minimo=Minimo(glucoData)
     desviacion=Desviacion(glucoData)
-    return render_template("resumen.html",media=round(media,4),mediana=mediana,moda=moda[0],maximo=maximo,minimo=minimo,desviacion=round(desviacion,4))
+    
+    fig=plt.figure()
+    plt.hist(x=glucoData, color='#F2AB6D', rwidth=0.85)
 
+    # configuramos
+    plt.xlabel('Cantidad de Glucosa en la sangre')
+    plt.ylabel('Frecuencia')
+    plt.title('Histograma de cantida de Glucosa')
+
+    ruta = str(pathlib.Path(__file__).parent.resolve()) # Obtiene la ruta del directorio 
+    ruta = ruta.replace(chr(92),'/')+'/static/grafica.png' # Ruta final con el nombre del archivo
+    fig.savefig(ruta)
+    
+    return render_template("resumen.html",media=round(media,4),mediana=mediana,moda=moda[0],maximo=maximo,minimo=minimo,desviacion=round(desviacion,4))
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",debug=True)

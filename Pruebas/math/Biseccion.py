@@ -8,12 +8,15 @@ def Bis(f,a,b):
     fa=f.subs(x,a)
     fb=f.subs(x,b)
 
-    if fa*fb==0:
+    if (fa*fb)>0:
+        print("--------------------------")
         return None
     else:
         p=(a+b)/2
         fp=f.subs(x,p)
         if fp==0:
+            print(p)
+            print("****************************")
             return p
         elif fa*fp<0:
             b=p
@@ -41,7 +44,7 @@ print(rangos)
 # print(Bis(fx,-4.26325641456060e-14,0.209999999999952))
 
 res = []
-for i in rangos: 
-    res.append(Bis(fx,i[0],i[1]))
+for i in (0,len(rangos)-1):
+    res.append(Bis(fx,rangos[0][i],rangos[1][i]))
 
 print(res)

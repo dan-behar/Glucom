@@ -1,32 +1,16 @@
-import matplotlib.pyplot as plt
-import numpy as np
-#matplotlib es para grafica, numpy vectoriza python
+import matplotlib.pyplot as plot
+import seaborn as sb
 
-def graf(x,y):
-    #necesario para exportar grafica
-    fig=plt.figure()
+edades = [12, 15, 13, 12, 18, 20, 19, 20, 13, 12, 13, 17, 15, 16, 13, 14, 13, 17, 19]
 
-    fig.add_subplot(1,1,1)
-    #graficador + etiquetas
-    plt.plot(x,y,'b.',label=r'$y_1$')
-    plt.xlabel('x')
-    plt.ylabel(r'$y=x^2$') #se pone r para formato "raw" y los $ encierran el texto para armarlo mas legible
+intervalos = range(min(edades), max(edades) + 2)
 
-    plt.title('f(x)')
-    plt.legend(loc=1)
-    plt.grid(True)
+sb.displot(edades, color='#F2AB6D', bins=intervalos, kde=True) #creamos el gráfico en Seaborn
 
-    plt.xticks(np.linspace(-3,3,10)) #(punto inicial, punto final, cantidad de separaciones entre a y b)
-    #si se quiere separar pero en y se escribe: plt.yticks
+#configuramos en Matplotlib
+plot.xticks(intervalos)
+plot.ylabel('Frecuencia')
+plot.xlabel('Edades')
+plot.title('Histograma de edades - Seaborn - codigopiton.com')
 
-    #linea horizontal o vertical
-    plt.axhline(4,color='r',lw=2)
-    #si se quiere la linea recta vertical es: plt.axvline. Horizontal: plt.axhline
-
-    plt.show()
-    #exportador de grafica
-    fig.savefig('grafica.png')
-
-x=[1,-1,2,-2,3,-3,4,-4,5,-5]
-y=[-5,-4,-3,-2,-1,0,1,2,3,4]
-graf(x,y)
+plot.show()
