@@ -68,8 +68,8 @@ def rango():
     global horaMuestra
     global glucoMuestra
     global consMuestra
-    global fecha1
-    global fecha2
+    global date1
+    global date2
     global fechaMuestra
 
     if request.method == "POST":
@@ -172,8 +172,6 @@ def met():
         meta = request.form['meta']
         meta = int(meta)
     tiempo=LagrangePol(glucoMuestra,horaMuestra,meta)
-    print(tiempo)
-    print("----")
     return render_template("meta.html",tiempo=tiempo)
 
 @app.route("/tendencia", methods=["GET", "POST"])
@@ -189,10 +187,10 @@ def ten():
 def res():
     global data
     global glucoData
-    global fecha1
-    global fecha2
+    global date1
+    global date2
     glucoData = []
-    todos = data.MuestraTodos(fecha1,fecha2)
+    todos = data.MuestraTodos(date1,date2)
     print(todos)
     for i in range(len(todos)):
         glucoData.append(todos[i][1])
