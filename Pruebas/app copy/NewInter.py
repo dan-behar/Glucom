@@ -1,7 +1,7 @@
 import numpy as np
 import sympy as sym
 
-def Newton(time,gluco,int):
+def Newton(time,gluco):
     a=[]
     divDIF=[]
     if len(time) == len(gluco):

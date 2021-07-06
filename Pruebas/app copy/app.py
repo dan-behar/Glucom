@@ -121,7 +121,7 @@ def gra():
             rango = arange(minimo, maximo,0.1)
 
             x=sym.Symbol('x')
-            y=Newton(horaMuestra,glucoMuestra,9)
+            y=Newton(horaMuestra,glucoMuestra)
             espacio = []
             for i in rango:
                 espacio.append(y.subs(x,i))
