@@ -4,6 +4,7 @@ from RegLin import reglin, grafreglin, imagen
 from datetime import datetime
 from datos import Datos 
 from NewInter import Newton
+from Integracion import TrapecioM
 from derivada import derivada
 from numpy import arange 
 import matplotlib.pyplot as plt
@@ -79,6 +80,7 @@ def rango():
         horaMuestra=[]
         glucoMuestra=[]
         consMuestra=[]
+        fechaMuestra=[]
         for i in range(len(muestra)):
             horaMuestra.append(muestra[i][2])
             glucoMuestra.append(muestra[i][1])
@@ -95,7 +97,18 @@ def gra():
     if request.method == "POST":
         tipo = request.form['grafica']
         if tipo == "a": 
-            print("Dispersión")
+            fig=plt.figure()
+
+            plt.plot(horaMuestra,glucoMuestra, 'b*',label=r'$y_1$')
+            plt.xlabel('Tiempo')
+            plt.ylabel('Glucosa en la Sangre')  
+            plt.title('Relación Tiempo-Glucosa')
+            plt.grid(True)
+
+            #exportador de grafica
+            ruta = str(pathlib.Path(__file__).parent.resolve()) # Obtiene la ruta del directorio 
+            ruta = ruta.replace(chr(92),'/')+'/static/grafica.png' # Ruta final con el nombre del archivo
+            fig.savefig(ruta)
         if tipo == "b": 
             fig=plt.figure()
 
@@ -142,7 +155,11 @@ def ace():
 
 @app.route("/promedio", methods=["GET", "POST"])
 def pro():
-    return render_template("promedio.html")
+    global horaMuestra
+    global glucoMuestra
+    integr=TrapecioM(horaMuestra,glucoMuestra)
+    res=round(integr/(max(horaMuestra)-min(horaMuestra)),4)
+    return render_template("promedio.html",res=res)
 
 @app.route("/meta", methods=["GET", "POST"])
 def met():
