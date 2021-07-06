@@ -12,18 +12,19 @@
 # Proyecto final de Scientific Computing
 
 # ---TAREAS---
-# Pasar funciones de Octave a Python (Marce) (DOING)
-    - Trapecio compuesto o Simpson un tercio
+# Rango de fechas
+# Gráficas 
+# Tabla de metabolizacion (razones de cambio de glucosa) 
+# Aceleración de la glucosa (Minima y máxima)
+# Glucosa promedio 
+# Glucosa meta *
+# Tendencia (Regresión lineal) *
+# Resumen estadístico 
+# Pasar funciones de Octave a Python (Marce, Daniel y Cruz) (DOING)
     - Regresión lineal 
-    -
-# Codificación de los datos 
-# Selección de observaciones aleatorias en un rango de fechas
-# Validacion de datos: "condicion" (como ingresar los datos al programa)
-# revision de dieta y sus posibles implicaciones
-# Menu para el usuario 
 
 
-# DONE -------
+# ------- DONE -------
 # Cargar excel en python como matriz (DONE)
 # Página de Inicio para ingresar nombre y hora de medicación. (DONE)
 # Investigar como retorna valores el date-picker (DONE): retorna texto (DONE)
@@ -31,3 +32,9 @@
 # Generar numeros aleatorios que no se repitan en un rango de (0, n) (DONE)
 # Gráficas (DONE)
 # Obtención de la muesta aleatoria (DONE)
+# Codificación de los datos (DONE)
+# Selección de observaciones aleatorias en un rango de fechas (DONE)
+# Validacion de datos: "condicion" (como ingresar los datos al programa) (DONE)
+# Menu para el usuario (DONE)
+
+

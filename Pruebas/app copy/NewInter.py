@@ -30,30 +30,10 @@ def Newton(time,gluco,int):
         for i in range (1,len(a)):
             t=a[i]
             for j in range(i):
-                t=t*(x-chinga[j])
+                t=t*(x-time[j])
             y+=t
             
         return y
     else:
         return 0
 
-#Prueba
-x=sym.Symbol('x')
-chinga=[1,2,4,5,7]
-damadre=[52,5,-5,-40,10]
-a=Newton(chinga,damadre,9)
-print(a.subs(x,9))
-
-"""
-x=sym.Symbol('x')
-
-fx=a[0]
-for i in range (1,len(a)):
-    t=a[i]
-    for j in range(i):
-        t=t*(x-chinga[j])
-    y+=t
-
-print(y)
-print(y.subs(x,9))
-"""

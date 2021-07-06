@@ -3,6 +3,10 @@ from flask import Flask, render_template, request, url_for, redirect
 from jinja2 import Template, FileSystemLoader, Environment
 from datetime import datetime
 from datos import Datos 
+from NewInter import Newton
+import numpy as np
+import sympy as sym
+
 # Convertimos un string con formato <día>/<mes>/<año> en datetime
 
 domain = "0.0.0.0:5000/"
@@ -61,14 +65,22 @@ def rango():
             horaMuestra.append(muestra[i][2])
             glucoMuestra.append(muestra[i][1])
             consMuestra.append(muestra[i][3])
-        print(horaMuestra)
-        print(glucoMuestra)
-        print(consMuestra)
-        
+    print(glucoMuestra)
+    print(horaMuestra)
     return render_template("rango.html")
 
 @app.route("/graficas", methods=["GET", "POST"])
 def gra():
+    global horaMuestra 
+    global glucoMuestra 
+    if request.method == "POST":
+        tipo = request.form['grafica']
+        if tipo == "a": 
+            print("Dispersión")
+        if tipo == "b": 
+            x=sym.Symbol('x')
+            y=Newton(horaMuestra,glucoMuestra,9)
+            print(y)
     return render_template("graficas.html")
 
 @app.route("/tabla", methods=["GET", "POST"])
