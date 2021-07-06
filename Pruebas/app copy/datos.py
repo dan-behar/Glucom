@@ -92,6 +92,19 @@ class Datos:
             if date1 <= row[0] and row[0] <= date2: 
                 lista.append(row) 
 
+        n = len(lista)
+        j = 0 
+        while j < n:
+            hora = lista[j][2]
+            i = j + 1
+            while i < n: 
+                if hora == lista[i][2]: 
+                    lista.pop(i) # Elimina las filas que tegan elementos repetidos 
+                    n = len(lista)
+                    i+=-1
+                i+=1 
+            j+=1 
+
         if len(lista) <= 10: 
             return lista
         n = len(lista)
@@ -99,9 +112,17 @@ class Datos:
         indices = range(n)
         indices = random.sample(indices,10)
         lista2 = []
-        print(indices)
 
         for i in indices:
             lista2.append(lista[i])
 
         return lista2
+
+"""
+basededatos = Datos('datos.xlsx',8)
+
+print('')
+muestra = basededatos.muestra(datetime.datetime(2020, 6, 1, 0, 0), datetime.datetime(2020, 6, 23, 0, 0)) 
+for row in muestra: 
+    print(row)
+"""
