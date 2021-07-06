@@ -4,6 +4,7 @@ from RegLin import reglin, grafreglin, imagen
 from datetime import datetime
 from datos import Datos 
 from NewInter import Newton
+from derivada import derivada
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sym
@@ -35,6 +36,8 @@ global fecha1
 fecha1 = ""
 global fecha2
 fecha2 = ""
+global fechaMuestra
+fechaMuestra = []
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -62,6 +65,7 @@ def rango():
     global consMuestra
     global fecha1
     global fecha2
+    global fechaMuestra
 
     if request.method == "POST":
         fecha1 = request.form['date1']
@@ -77,7 +81,8 @@ def rango():
         for i in range(len(muestra)):
             horaMuestra.append(muestra[i][2])
             glucoMuestra.append(muestra[i][1])
-            consMuestra.append(muestra[i][3])
+            consMuestra.append(str(muestra[i][3]))
+            fechaMuestra.append(str(muestra[i][0]))
     print(glucoMuestra)
     print(horaMuestra)
     return render_template("rango.html", fecha1=fecha1,fecha2=fecha2)
@@ -119,7 +124,16 @@ def gra():
 
 @app.route("/tabla", methods=["GET", "POST"])
 def ta():
-    return render_template("tabla.html")
+    global horaMuestra
+    global glucoMuestra
+    global consMuestra
+    global fechaMuestra
+    cambio=derivada(horaMuestra,glucoMuestra)
+    for i in range(len(cambio)):
+        cambio[i]=round(cambio[i],4)
+    print(fechaMuestra)
+    print(consMuestra)
+    return render_template("tabla.html",cambio=cambio,fecha=fechaMuestra,condicion=consMuestra)
 
 @app.route("/aceleracion", methods=["GET", "POST"])
 def ace():
