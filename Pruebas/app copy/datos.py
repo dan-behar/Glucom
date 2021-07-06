@@ -83,6 +83,7 @@ class Datos:
             t = str(row[2]) # Convierte la hora de tipo datetime.time(H, M) a string 'h:m:s'
             (h, m, s) = t.split(':') # Separa las horas, los minutos y los segundos.
             row[2] = int(h) + int(m)/60 - hora # Covierte la hora a decimal tomando como cero la hora a la que se toma la medicina 
+            row[2]=round(row[2],4)
         return tabla 
 
     def muestra(self, date1, date2): 
