@@ -1,12 +1,13 @@
-  
 from flask import Flask, render_template, request, url_for, redirect
 from jinja2 import Template, FileSystemLoader, Environment
+from RegLin import reglin, grafreglin, imagen
 from datetime import datetime
 from datos import Datos 
 from NewInter import Newton
+import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sym
-from RegLin import reglin, grafreglin, imagen
+import pathlib
 
 # Convertimos un string con formato <día>/<mes>/<año> en datetime
 
@@ -30,6 +31,10 @@ global glucoMuestra
 glucoMuestra = []
 global consMuestra 
 consMuestra = []
+global fecha1
+fecha1 = ""
+global fecha2
+fecha2 = ""
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -55,11 +60,14 @@ def rango():
     global horaMuestra
     global glucoMuestra
     global consMuestra
+    global fecha1
+    global fecha2
+
     if request.method == "POST":
-        date1 = request.form['date1']
-        date2 = request.form['date2']
-        date1 = datetime.strptime(date1, '%Y-%m-%d')
-        date2 = datetime.strptime(date2, '%Y-%m-%d')
+        fecha1 = request.form['date1']
+        fecha2 = request.form['date2']
+        date1 = datetime.strptime(fecha1, '%Y-%m-%d')
+        date2 = datetime.strptime(fecha2, '%Y-%m-%d')
         # print(date1, date2)
         muestra = data.muestra(date1, date2)
         print(len(muestra))
@@ -72,7 +80,7 @@ def rango():
             consMuestra.append(muestra[i][3])
     print(glucoMuestra)
     print(horaMuestra)
-    return render_template("rango.html")
+    return render_template("rango.html", fecha1=fecha1,fecha2=fecha2)
 
 @app.route("/graficas", methods=["GET", "POST"])
 def gra():
@@ -83,9 +91,30 @@ def gra():
         if tipo == "a": 
             print("Dispersión")
         if tipo == "b": 
+            fig=plt.figure()
+
+            minimo = int(min(horaMuestra))
+            maximo = int(max(horaMuestra))
+            rango = range(minimo, maximo)
+
             x=sym.Symbol('x')
             y=Newton(horaMuestra,glucoMuestra,9)
-            print(y)
+            espacio = []
+            for i in rango:
+                espacio.append(y.subs(x,i))
+            print(len(rango))
+            print(len(espacio))
+            plt.plot(rango,espacio)
+            plt.xlabel('Tiempo')
+            plt.ylabel('Glucosa en la Sangre')  
+            plt.title('Relación Tiempo-Glucosa')
+            plt.grid(True)
+
+            #exportador de grafica
+            ruta = str(pathlib.Path(__file__).parent.resolve()) # Obtiene la ruta del directorio 
+            ruta = ruta.replace(chr(92),'/')+'/static/grafica.png' # Ruta final con el nombre del archivo
+            fig.savefig(ruta)
+
     return render_template("graficas.html")
 
 @app.route("/tabla", methods=["GET", "POST"])
@@ -111,7 +140,7 @@ def ten():
     (a,b,r2)=reglin(horaMuestra,glucoMuestra)
     text=grafreglin(horaMuestra,glucoMuestra,(a,b,r2))
     imagen(horaMuestra,glucoMuestra,text[1],text[0])
-    return render_template("tendencia.html",r2=r2)
+    return render_template("tendencia.html",r2=round(r2, 4))
 
 @app.route("/resumen", methods=["GET", "POST"])
 def res():

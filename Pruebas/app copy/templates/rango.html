@@ -58,6 +58,12 @@
       <button class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom" type="submit" onclick="clickAlert()">Fijar Rango</button>
     </form>
     <br>
+    
+    {% if fecha1 %}
+
+    <h5>Rango de fechas actual: {{fecha1}}  a  {{fecha2}}</h5>
+    
+    {% endif %}
     <p>¡Esta sección es INDISPENSALE!</p>
   </div>
 
