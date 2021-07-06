@@ -4,12 +4,12 @@ import pathlib
 import sympy as sym
 #matplotlib es para grafica, numpy vectoriza python
 
-def graf(f,x):
+def graf(x,y,xp,yp):
     #necesario para exportar grafica
     fig=plt.figure()
 
     #graficador + etiquetas
-    plt.plot(x, [f1(i) for i in x])
+    plt.plot(x,y,'b.',xp,yp)
     plt.xlabel('Tiempo')
     plt.ylabel('Glucosa en la Sangre') #se pone r para formato "raw" y los $ encierran el texto para armarlo mas legible
 
@@ -26,7 +26,3 @@ def graf(f,x):
     ruta = ruta.replace(chr(92),'/')+'/static/grafica.png' # Ruta final con el nombre del archivo
     fig.savefig(ruta)
 
-x = range(-10, 15)
-def f1(x):
-    return 2*(x**2) + 5*x - 2
-graf(f1,x)

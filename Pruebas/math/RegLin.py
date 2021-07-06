@@ -1,5 +1,6 @@
 import math
 import numpy as np
+from Graf import graf
 
 def RegLin(x,y):
     n=len(x)
@@ -35,6 +36,8 @@ def GrafRegLin(x,y,ejemplo):
 
     return xp,yp
 
+x=range(-10,15)
+graf(yp,x)
 
 
 

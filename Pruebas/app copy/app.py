@@ -6,6 +6,7 @@ from datos import Datos
 from NewInter import Newton
 import numpy as np
 import sympy as sym
+from RegLin import reglin, grafreglin
 
 # Convertimos un string con formato <día>/<mes>/<año> en datetime
 
@@ -101,7 +102,11 @@ def met():
 
 @app.route("/tendencia", methods=["GET", "POST"])
 def ten():
-    return render_template("tendencia.html")
+    global horaMuestra
+    global glucoMuestra
+    (a,b,r2)=reglin(horaMuestra,glucoMuestra)
+    grafreglin(horaMuestra,glucoMuestra,(a,b,r2))
+    return render_template("tendencia.html",r2=r2)
 
 @app.route("/resumen", methods=["GET", "POST"])
 def res():
