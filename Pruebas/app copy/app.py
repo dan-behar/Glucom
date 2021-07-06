@@ -5,6 +5,7 @@ from datetime import datetime
 from datos import Datos 
 from NewInter import Newton
 from derivada import derivada
+from numpy import arange 
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sym
@@ -98,9 +99,9 @@ def gra():
         if tipo == "b": 
             fig=plt.figure()
 
-            minimo = int(min(horaMuestra))
-            maximo = int(max(horaMuestra))
-            rango = range(minimo, maximo)
+            minimo = min(horaMuestra)
+            maximo = max(horaMuestra)
+            rango = arange(minimo, maximo,0.1)
 
             x=sym.Symbol('x')
             y=Newton(horaMuestra,glucoMuestra,9)

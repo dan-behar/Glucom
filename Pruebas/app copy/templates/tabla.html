@@ -29,7 +29,7 @@
         <div class="w3-container">
           <h3>Fecha</h3>
           <ul class="w3-ul w3-light-grey w3-center">
-            {%for value in fecha[]:%}
+            {%for value in fecha%}
             <li class="w3-padding-16">{{value}}</li>
             {%endfor%}
           </ul>
@@ -41,8 +41,19 @@
         <div class="w3-container">
           <h3>Condición</h3>
           <ul class="w3-ul w3-light-grey w3-center">
-            {%for value in condicion[]:%}
-            <li class="w3-padding-16">{{value}}</li>
+            {% for value in condicion %}
+              {% if value == '0' %}
+                <li class="w3-padding-16">Ayuno</li>
+              {% endif %}
+              {% if value == '1' %}
+                <li class="w3-padding-16">Desayuno</li>
+              {% endif %}
+              {% if value == '2' %}
+                <li class="w3-padding-16">Almuerzo</li>
+              {% endif %}
+              {% if value == '3' %}
+                <li class="w3-padding-16">Cena</li>
+              {% endif %}
             {%endfor%}
           </ul>
         </div>
