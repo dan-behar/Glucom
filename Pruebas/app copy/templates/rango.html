@@ -55,7 +55,7 @@
         </div>
       </div>
       <br><br>
-      <button class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom" type="submit">Fijar Rango</button>
+      <button class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom" type="submit" onclick="clickAlert()">Fijar Rango</button>
     </form>
     <br>
     <p>¡Esta sección es INDISPENSALE!</p>
@@ -70,6 +70,9 @@
       var captionText = document.getElementById("caption");
       captionText.innerHTML = element.alt;
     }
+    function clickAlert(){
+      alert("Ha ingresado el rango de fechas exitosamente! Puede proceder a ver los resultados del Análisis!")
+      }
   </script>
 
 

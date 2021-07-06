@@ -34,7 +34,7 @@ def reglin(x,y):
     return pendiente,intercepto,r2
 
 
-def graf(x,y,xp,yp):
+def imagen(x,y,xp,yp):
     #necesario para exportar grafica
     fig=plt.figure()
 
@@ -44,11 +44,7 @@ def graf(x,y,xp,yp):
     plt.ylabel('Glucosa en la Sangre') #se pone r para formato "raw" y los $ encierran el texto para armarlo mas legible
 
     plt.title('Relación Tiempo-Glucosa')
-    plt.legend(loc=1)
     plt.grid(True)
-
-    plt.xticks(np.linspace(-3,3,3)) #(punto inicial, punto final, cantidad de separaciones entre a y b)
-    #si se quiere separar pero en y se escribe: plt.yticks
 
     #exportador de grafica
     ruta = str(pathlib.Path(__file__).parent.resolve()) # Obtiene la ruta del directorio 

@@ -12,16 +12,14 @@
 # Proyecto final de Scientific Computing
 
 # ---TAREAS---
-# Rango de fechas
+# Rango de fechas (DONE)
 # Gráficas 
 # Tabla de metabolizacion (razones de cambio de glucosa) 
 # Aceleración de la glucosa (Minima y máxima)
 # Glucosa promedio 
 # Glucosa meta *
-# Tendencia (Regresión lineal) *
+# Tendencia (Regresión lineal) (DONE)
 # Resumen estadístico 
-# Pasar funciones de Octave a Python (Marce, Daniel y Cruz) (DOING)
-    - Regresión lineal 
 
 
 # ------- DONE -------
@@ -36,5 +34,5 @@
 # Selección de observaciones aleatorias en un rango de fechas (DONE)
 # Validacion de datos: "condicion" (como ingresar los datos al programa) (DONE)
 # Menu para el usuario (DONE)
-
+# Pasar funciones de Octave a Python (Marce, Daniel y Cruz) (DONE)
 

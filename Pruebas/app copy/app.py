@@ -6,7 +6,7 @@ from datos import Datos
 from NewInter import Newton
 import numpy as np
 import sympy as sym
-from RegLin import reglin, grafreglin
+from RegLin import reglin, grafreglin, imagen
 
 # Convertimos un string con formato <día>/<mes>/<año> en datetime
 
@@ -51,7 +51,7 @@ def register():
 @app.route("/rango", methods=["GET", "POST"])
 def rango():
     global data
-    global muetra 
+    global muestra 
     global horaMuestra
     global glucoMuestra
     global consMuestra
@@ -62,6 +62,10 @@ def rango():
         date2 = datetime.strptime(date2, '%Y-%m-%d')
         # print(date1, date2)
         muestra = data.muestra(date1, date2)
+        print(len(muestra))
+        horaMuestra=[]
+        glucoMuestra=[]
+        consMuestra=[]
         for i in range(len(muestra)):
             horaMuestra.append(muestra[i][2])
             glucoMuestra.append(muestra[i][1])
@@ -105,7 +109,8 @@ def ten():
     global horaMuestra
     global glucoMuestra
     (a,b,r2)=reglin(horaMuestra,glucoMuestra)
-    grafreglin(horaMuestra,glucoMuestra,(a,b,r2))
+    text=grafreglin(horaMuestra,glucoMuestra,(a,b,r2))
+    imagen(horaMuestra,glucoMuestra,text[1],text[0])
     return render_template("tendencia.html",r2=r2)
 
 @app.route("/resumen", methods=["GET", "POST"])

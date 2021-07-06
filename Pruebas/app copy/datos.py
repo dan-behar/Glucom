@@ -98,6 +98,7 @@ class Datos:
         indices = range(n)
         indices = random.sample(indices,10)
         lista2 = []
+        print(indices)
 
         for i in indices:
             lista2.append(lista[i])
