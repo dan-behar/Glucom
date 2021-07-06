@@ -70,6 +70,8 @@ def rango():
     global consMuestra
     global date1
     global date2
+    global fecha1
+    global fecha2
     global fechaMuestra
 
     if request.method == "POST":
