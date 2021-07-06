@@ -183,6 +183,7 @@ def res():
     global fecha2
     glucoData = []
     todos = data.MuestraTodos(fecha1,fecha2)
+    print(todos)
     for i in range(len(todos)):
         glucoData.append(todos[i][1])
     media=Media(glucoData)

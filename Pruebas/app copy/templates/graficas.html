@@ -10,15 +10,18 @@
   
     <h3 class="text-center">Escoge el tipo de grafica que se desee: </h3>
     <form method="POST" action="" class="justify-content-center">
+      <center>
         <div class="form-group">
               <select name="grafica" type="text" class="form-select" aria-label="Default select example">
                 <option selected>Selecciona</option>
                 <option value="a">Diagrama de dispersión</option>
                 <option value="b">Polionomio interpolado</option>
               </select>
+              <br>
         </div>
         <button type="submit" class="btn btn-primary btn-lg">Mandar</button>
-      </form>
-      <p>Comparación Glucosa-Tiempo</p>
-      <img src="/static/grafica.png" style="width:100%" onclick="onClick(this)" alt="graficaRegLin">
+      </center>
+    </form>
+    <p>Comparación Glucosa-Tiempo</p>
+    <img src="/static/grafica.png" style="width:100%" onclick="onClick(this)" alt="graficaRegLin">
 {% endblock %} 
