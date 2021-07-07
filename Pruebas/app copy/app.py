@@ -166,6 +166,19 @@ def pro():
     global horaMuestra
     global glucoMuestra
     global name
+
+    for i in range(1,len(horaMuestra)):
+        for j in range(0,len(horaMuestra)-i):
+            if(horaMuestra[j] > horaMuestra[j+1]):
+                k = horaMuestra[j+1]
+                horaMuestra[j+1] = horaMuestra[j]
+                horaMuestra[j] = k
+    for i in range(1,len(glucoMuestra)):
+        for j in range(0,len(glucoMuestra)-i):
+            if(glucoMuestra[j] > glucoMuestra[j+1]):
+                k = glucoMuestra[j+1]
+                glucoMuestra[j+1] = glucoMuestra[j]
+                glucoMuestra[j] = k
     integr=TrapecioM(horaMuestra,glucoMuestra)
     res=round(integr/(max(horaMuestra)-min(horaMuestra)),4)
     return render_template("promedio.html",res=res,name=name)

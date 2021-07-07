@@ -12,12 +12,6 @@
 # Glucom
 # Proyecto final de Scientific Computing
 
-# ---TAREAS---
-# Glucosa meta *
-          - Hacer polinomio interpolado - meta 
-          - Aproximar 
-          - Buscar rangos donde hayan posibles ceros    
-# Ingresar desde la pagina el archivo excel deseado {OPCIONAL}
 
 
 # ------- DONE -------
@@ -40,3 +34,4 @@
 # Glucosa promedio (DONE)
 # Aceleración de la glucosa (Minima y máxima) (DONE)
 # Resumen estadístico HISTOGRAMA (DONE)
+# Glucosa meta (DONE)  
