@@ -46,6 +46,7 @@ global glucoData
 glucoData = []
 
 
+
 @app.route("/", methods=["GET", "POST"])
 def register():
     global name
@@ -73,7 +74,7 @@ def rango():
     global fecha1
     global fecha2
     global fechaMuestra
-
+    global name
     if request.method == "POST":
         fecha1 = request.form['date1']
         fecha2 = request.form['date2']
@@ -90,12 +91,13 @@ def rango():
             consMuestra.append(str(muestra[i][3]))
             fechaMuestra.append(str(muestra[i][0]))
 
-    return render_template("rango.html", fecha1=fecha1,fecha2=fecha2)
+    return render_template("rango.html", fecha1=fecha1,fecha2=fecha2,name=name)
 
 @app.route("/graficas", methods=["GET", "POST"])
 def gra():
     global horaMuestra 
     global glucoMuestra 
+    global name
     if request.method == "POST":
         tipo = request.form['grafica']
         if tipo == "a": 
@@ -134,7 +136,7 @@ def gra():
             ruta = ruta.replace(chr(92),'/')+'/static/grafica.png' # Ruta final con el nombre del archivo
             fig.savefig(ruta)
 
-    return render_template("graficas.html")
+    return render_template("graficas.html",name=name)
 
 @app.route("/tabla", methods=["GET", "POST"])
 def ta():
@@ -142,48 +144,60 @@ def ta():
     global glucoMuestra
     global consMuestra
     global fechaMuestra
+    global name
     cambio=derivada(horaMuestra,glucoMuestra)
     for i in range(len(cambio)):
         cambio[i]=round(cambio[i],4)
-    return render_template("tabla.html",cambio=cambio,fecha=fechaMuestra,condicion=consMuestra)
+    return render_template("tabla.html",cambio=cambio,fecha=fechaMuestra,condicion=consMuestra,name=name)
 
 @app.route("/aceleracion", methods=["GET", "POST"])
 def ace():
     global horaMuestra
     global glucoMuestra
+    global name
     cambio = derivada(horaMuestra, glucoMuestra)
     aceleracion = derivada(horaMuestra, cambio)
     maximo = round(max(aceleracion),4)
     minimo = round(min(aceleracion),4)
-    return render_template("aceleracion.html",maximo=maximo,minimo=minimo)
+    return render_template("aceleracion.html",maximo=maximo,minimo=minimo,name=name)
 
 @app.route("/promedio", methods=["GET", "POST"])
 def pro():
     global horaMuestra
     global glucoMuestra
+    global name
     integr=TrapecioM(horaMuestra,glucoMuestra)
     res=round(integr/(max(horaMuestra)-min(horaMuestra)),4)
-    return render_template("promedio.html",res=res)
+    return render_template("promedio.html",res=res,name=name)
 
 @app.route("/meta", methods=["GET", "POST"])
 def met():
-    global horaMuestra
-    global glucoMuestra
-    meta=0
+    global data
+    global date1
+    global date2
+    global name
+    muestra = data.muestraMeta(date1, date2)
+    horaMuestra=[]
+    glucoMuestra=[]
+    for i in range(len(muestra)):
+        horaMuestra.append(muestra[i][2])
+        glucoMuestra.append(muestra[i][1])
+    meta = 0 
     if request.method == "POST":
         meta = request.form['meta']
         meta = int(meta)
     tiempo=LagrangePol(glucoMuestra,horaMuestra,meta)
-    return render_template("meta.html",tiempo=tiempo)
+    return render_template("meta.html",tiempo=round(tiempo),name=name)
 
 @app.route("/tendencia", methods=["GET", "POST"])
 def ten():
     global horaMuestra
     global glucoMuestra
+    global name
     (a,b,r2)=reglin(horaMuestra,glucoMuestra)
     text=grafreglin(horaMuestra,glucoMuestra,(a,b,r2))
     imagen(horaMuestra,glucoMuestra,text[1],text[0])
-    return render_template("tendencia.html",r2=round(r2, 4))
+    return render_template("tendencia.html",r2=round(r2, 4),name=name)
 
 @app.route("/resumen", methods=["GET", "POST"])
 def res():
@@ -191,9 +205,9 @@ def res():
     global glucoData
     global date1
     global date2
+    global name
     glucoData = []
     todos = data.MuestraTodos(date1,date2)
-    print(todos)
     for i in range(len(todos)):
         glucoData.append(todos[i][1])
     media=Media(glucoData)
@@ -215,7 +229,7 @@ def res():
     ruta = ruta.replace(chr(92),'/')+'/static/grafica.png' # Ruta final con el nombre del archivo
     fig.savefig(ruta)
     
-    return render_template("resumen.html",media=round(media,4),mediana=mediana,moda=moda[0],maximo=maximo,minimo=minimo,desviacion=round(desviacion,4))
+    return render_template("resumen.html",media=round(media,4),mediana=mediana,moda=moda[0],maximo=maximo,minimo=minimo,desviacion=round(desviacion,4),name=name)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",debug=True)

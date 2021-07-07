@@ -5,7 +5,6 @@ def LagrangePol(x,y,Xint):
     n = len(x)
 
     for i in range(n):
-        print(i)
         producto=y[i]
         for j in range(n):
             print(j,end=' ')
@@ -14,7 +13,7 @@ def LagrangePol(x,y,Xint):
         sum=sum+producto
     Yinter=sum
     return Yinter
-
+"""
 #ejemplo
 dato = 8
 x = [1,2,4,5,7]
@@ -22,3 +21,4 @@ y = [52,5,-5,-40,10]
 
 prueba=LagrangePol(x,y,dato)
 print(prueba)
+"""

@@ -125,6 +125,38 @@ class Datos:
                 lista.append(row) 
 
         return lista
+    
+    def muestraMeta(self, date1, date2): 
+        lista = []
+        for row in self.tabla: #selecciona los datos que están en el rango de fechas 
+            if date1 <= row[0] and row[0] <= date2: 
+                lista.append(row) 
+
+        n = len(lista)
+        j = 0 
+        while j < n:
+            hora = lista[j][1]
+            i = j + 1
+            while i < n: 
+                if hora == lista[i][1]: 
+                    lista.pop(i) # Elimina las filas que tegan elementos repetidos 
+                    n = len(lista)
+                    i+=-1
+                i+=1 
+            j+=1 
+
+        if len(lista) <= 10: 
+            return lista
+        n = len(lista)
+
+        indices = range(n)
+        indices = random.sample(indices,10)
+        lista2 = []
+
+        for i in indices:
+            lista2.append(lista[i])
+
+        return lista2
 
 """
 basededatos = Datos('datos.xlsx',8)
