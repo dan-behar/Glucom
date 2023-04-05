@@ -1,3 +1,9 @@
+---
+title: "Descripcion de Proyecto"
+authors: "Daniel Behar/Cruz del Cid/Marcela Melgar"
+date: "13/11/2022"
+---
+
 # Glucom
 # Proyecto final de Scientific Computing
 
