@@ -1,8 +1,8 @@
 ---
 title: "Descripcion de Proyecto"
-author: Daniel Behar 
+authors: Daniel Behar 
 authors: Cruz del Cid
-author: Marcela Melgar
+authors: Marcela Melgar
 date: "13/11/2022"
 ---
 
